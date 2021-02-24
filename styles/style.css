@@ -90,7 +90,7 @@ a:hover {
 a:focus {
   border: 3px solid rgb(61, 55, 55);
   border-radius: 8px;
-  box-shadow: 0 6px 15px rgb(0, 0, , 0.2);
+  box-shadow: 0 6px 15px rgb(0, 0, 0.2);
 }
 /* "обёртка" для изображения в <section> "images" */
 a > div {
