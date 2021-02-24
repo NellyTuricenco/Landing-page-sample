@@ -1,0 +1,306 @@
+/* вынести шрифт (font-size, font-weight, font-family) и цвета в переменные */
+:root {
+  --fz-default: 22px;
+  --fw-normal: 500;
+  --fw-bold: 700;
+  --ff-default: "Work Sans", sans-serif;
+  --ff-cursive: "Architects Daughter", cursive;
+  --title: #fff;
+  --bg-form: #ffffffe6;
+  --list: #ff0c34;
+  --bg-countries: #eeeeee;
+  --bg-countries-default: #c6e1ff;
+  --bg-egypt: #b3001e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--ff-default);
+  font-weight: var(--fw-normal);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+/* <section> "images" */
+body section:first-child {
+  min-height: 100vh;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../images/images-bg.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/*
+создать эффект затемнения для фонового изображения в <section> "images";
+стилизовать этот эффект на своё усмотрение
+*/
+body section:first-child::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* заголовок в <section> "images" */
+body section:first-child h1 {
+  font-size: var(--fz-default);
+  font-weight: var(--fw-bold);
+  font-family: var(--ff-cursive);
+  margin-bottom: 20px;
+  color: var(--title);
+  z-index: 2;
+}
+
+/* "обёртка" для всех изображений в <section> "images" */
+/* body section:first-child *:not(h1) - можно и такой вариант */
+body section:first-child > div {
+  width: calc(400px * 2 + 50px);
+  height: calc(270px * 2 + 50px);
+
+  position: relative;
+}
+
+/* стилизовать эффект при фокусе для <a> в <section> "images" на своё усмотрение */
+
+a:hover {
+  /* border: 3px solid ; */
+  transform: scale(1.2);
+}
+
+a:focus {
+  border: 3px solid rgb(61, 55, 55);
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgb(0, 0, , 0.2);
+}
+/* "обёртка" для изображения в <section> "images" */
+a > div {
+  max-width: 400px;
+  height: 270px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+
+  border-radius: 8px;
+}
+
+/* разместить изображения в <section> "images" так, как на примере "example.png" */
+div > a {
+  width: 400px;
+  height: 270px;
+  position: absolute;
+  transition: transform 0.2s;
+}
+
+a:nth-child(1) {
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+a:nth-child(2) {
+  left: 225px;
+  top: 160px;
+  z-index: 2;
+}
+
+a:nth-child(3) {
+  top: 0;
+  right: 0;
+  z-index: 3;
+}
+
+a:nth-child(4) {
+  bottom: 0;
+  z-index: 3;
+}
+
+a:nth-child(5) {
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
+/* <img> в <section> "images" */
+img {
+  border-radius: 8px;
+}
+
+/* <section> "registration" */
+body section:nth-child(2) {
+  background-image: url(../images/registration-bg.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  padding: 50px;
+}
+
+/* <form> в <section> "registration" */
+form {
+  max-width: 450px;
+  width: 100%;
+  background-color: var(--bg-form);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* <h1> в <section> "registration" */
+form > h1 {
+  margin-bottom: 20px;
+  font-size: var(--fz-default);
+  font-weight: var(--fw-bold);
+  font-family: var(--ff-cursive);
+}
+
+/*
+    стилизовать <input> и <button> в <section> "registration" на своё усмотрение;
+    создать разные эффекты при наведении и фокусе для <input> и <button>;
+    стилизовать placeholder для <input>: сделать курсивный текст тёмного цвета
+*/
+input {
+  border-radius: 5px;
+  background-color: transparent;
+  border: 2px solid var(--bg-form);
+  padding: 3px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  width: 192px;
+  outline: none;
+}
+
+input:nth-child(4) {
+  margin-top: 5px;
+}
+
+input::placeholder {
+  font-family: var(--ff-cursive);
+  font-weight: var(--fw-bold);
+  color: rgb(0, 0, 139);
+}
+
+input:focus {
+  background-color: whitesmoke;
+}
+
+button {
+  border: 2px solid var(--bg-countries);
+  cursor: pointer;
+  background-color: var(--bg-countries-default);
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  font-weight: var(--fw-bold);
+  outline: none;
+}
+
+button:hover {
+  background-color: hsl(212, 100%, 79%);
+}
+
+button:focus {
+  box-shadow: none;
+  border-color: hsl(212, 86%, 33%);
+}
+
+/* <section> "countries" */
+body section:last-child {
+  padding: 50px;
+}
+
+/* <h1> в <section> "countries" */
+body section:last-child h1 {
+  margin-bottom: 30px;
+  font-size: var(--fz-default);
+  font-weight: var(--fw-bold);
+  font-family: var(--ff-cursive);
+}
+
+/* <ol> в <section> "countries" */
+ol {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* только дочерние <li> в <ol> в <section> "countries" */
+ol > li {
+  display: flex;
+  flex-direction: column;
+}
+
+/* <strong> в <section> "countries" */
+strong {
+  display: block;
+  font-size: var(--fz-default);
+  font-weight: var(--fw-bold);
+  margin-bottom: 10px;
+}
+
+/* <ul> в <section> "countries" */
+ul {
+  padding: 20px;
+  background-color: var(--bg-countries-default);
+  border-radius: 10px;
+  flex-grow: 1;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* единственный <li> в <ul> в <section> "countries" */
+ul li:only-child {
+  color: var(--list);
+  text-decoration: underline;
+}
+
+/* все <ul> в <section> "countries", кроме того, в котором находится страна "Egypt" */
+ol li:not(:nth-child(5)) ul {
+  background-color: var(--bg-countries);
+}
+
+/*
+    <li>, в котором написано "Egypt";
+    необходимо разместить этот элемент в нижней правой части экрана так,
+    чтобы он всегда оставался видимым при прокрутке страницы
+*/
+ol > li:nth-of-type(5) > ul > li:nth-child(3) {
+  font-size: var(--fz-default);
+  color: #fff;
+  background-color: var(--list);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+  font-family: var(--ff-cursive);
+  cursor: pointer;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+/* эффект при наведении для <li>, в котором написано "Egypt" */
+ol > li:hover:nth-of-type(5) {
+  background-color: var(--bg-egypt);
+}
+
+/* добавить текст "Selected country: " для <li>, в котором написано "Egypt" */
+ol > li:nth-of-type(5) ul > li:nth-of-type(3)::after {
+  content: " - Selected country";
+  color: blueviolet;
+}
